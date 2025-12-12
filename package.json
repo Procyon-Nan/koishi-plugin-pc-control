@@ -1,7 +1,7 @@
 {
   "name": "koishi-plugin-pc-control",
   "description": "a simple plugin to control your pc",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
