@@ -123,4 +123,20 @@ export function apply(ctx: Context, config: Config) {
       }
     })
   })
+
+  // 关闭本地PC
+  ctx.command('pc.shutdown', '远程关闭电脑').action(async ({ session }) => {
+    // 权限校验
+    if (!checkPermission(session)) return '你没有执行此操作的权限'
+
+    exec('shutdown /s /t 10', (error) => {
+      if (error) {
+        logger.error(`关机指令执行失败: ${error.message}`)
+        session.send(`关机失败: ${error.message}`)
+      } else {
+        logger.info(`已接收关机指令，系统将在 10 秒后关闭`)
+        session.send('已执行关机指令，系统将在 10 秒后关闭')
+      }
+    })
+  })
 }
